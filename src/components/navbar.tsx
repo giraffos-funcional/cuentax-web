@@ -3,33 +3,51 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calculator, Menu, X, ChevronDown } from "lucide-react";
+import { Calculator, Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import clsx from "clsx";
 
-const NAV_LINKS = [
+// ── Mega-menu categories ──────────────────────────────────────
+const MENU_CATEGORIES = [
   {
-    label: "Funcionalidades",
-    href: "/funcionalidades",
-    children: [
+    title: "Contabilidad",
+    links: [
       { label: "Contabilidad", href: "/funcionalidades/contabilidad" },
-      { label: "Remuneraciones", href: "/funcionalidades/remuneraciones" },
-      { label: "Facturacion Electronica", href: "/funcionalidades/facturacion-electronica" },
-      { label: "Declaraciones SII", href: "/funcionalidades/declaraciones-sii" },
-      { label: "Reportes", href: "/funcionalidades/reportes" },
-      { label: "Portal del Trabajador", href: "/funcionalidades/portal-del-trabajador" },
+      { label: "Libro Compras y Ventas", href: "/funcionalidades/libro-compras-ventas" },
       { label: "Conciliacion Bancaria", href: "/funcionalidades/conciliacion-bancaria" },
+      { label: "Centros de Costo", href: "/funcionalidades/centros-costo" },
+      { label: "Flujo de Caja", href: "/funcionalidades/flujo-caja" },
+    ],
+  },
+  {
+    title: "Remuneraciones",
+    links: [
+      { label: "Remuneraciones", href: "/funcionalidades/remuneraciones" },
       { label: "Finiquitos", href: "/funcionalidades/finiquitos" },
       { label: "Previred", href: "/funcionalidades/previred" },
+      { label: "Libro de Remuneraciones", href: "/funcionalidades/libro-remuneraciones" },
+      { label: "Portal del Trabajador", href: "/funcionalidades/portal-del-trabajador" },
+    ],
+  },
+  {
+    title: "Facturacion & SII",
+    links: [
+      { label: "Facturacion Electronica", href: "/funcionalidades/facturacion-electronica" },
+      { label: "Declaraciones SII", href: "/funcionalidades/declaraciones-sii" },
       { label: "Cotizaciones", href: "/funcionalidades/cotizaciones" },
       { label: "Certificacion SII", href: "/funcionalidades/certificacion-sii" },
+    ],
+  },
+  {
+    title: "Plataforma",
+    links: [
+      { label: "Reportes", href: "/funcionalidades/reportes" },
       { label: "Multi-Empresa", href: "/funcionalidades/multi-empresa" },
-      { label: "Libro de Remuneraciones", href: "/funcionalidades/libro-remuneraciones" },
-      { label: "Libro Compras y Ventas", href: "/funcionalidades/libro-compras-ventas" },
-      { label: "Flujo de Caja", href: "/funcionalidades/flujo-caja" },
-      { label: "Centros de Costo", href: "/funcionalidades/centros-costo" },
       { label: "Gestion Comercial", href: "/funcionalidades/gestion-comercial" },
     ],
   },
+];
+
+const OTHER_LINKS = [
   { label: "Precios", href: "/precios" },
   { label: "Para Contadores", href: "/para-contadores" },
   { label: "Comparar", href: "/comparar" },
@@ -79,57 +97,76 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex lg:items-center lg:gap-1">
-          {NAV_LINKS.map((link) =>
-            link.children ? (
-              <div
-                key={link.label}
-                className="relative"
-                onMouseEnter={() => setDropdownOpen(true)}
-                onMouseLeave={() => setDropdownOpen(false)}
-              >
-                <button
-                  className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-surface-600 transition-colors hover:text-surface-900 hover:bg-surface-100"
+          {/* Funcionalidades mega-menu */}
+          <div
+            className="relative"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <button
+              className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-surface-600 transition-colors hover:text-surface-900 hover:bg-surface-100"
+            >
+              Funcionalidades
+              <ChevronDown
+                className={clsx(
+                  "h-4 w-4 transition-transform duration-200",
+                  dropdownOpen && "rotate-180"
+                )}
+              />
+            </button>
+            <AnimatePresence>
+              {dropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="absolute -left-20 top-full mt-2 w-[640px] rounded-2xl bg-white p-5 shadow-xl shadow-surface-900/10 ring-1 ring-surface-200"
                 >
-                  {link.label}
-                  <ChevronDown
-                    className={clsx(
-                      "h-4 w-4 transition-transform duration-200",
-                      dropdownOpen && "rotate-180"
-                    )}
-                  />
-                </button>
-                <AnimatePresence>
-                  {dropdownOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute left-0 top-full mt-2 w-56 rounded-xl bg-white p-2 shadow-xl shadow-surface-900/10 ring-1 ring-surface-200"
+                  <div className="grid grid-cols-4 gap-6">
+                    {MENU_CATEGORIES.map((cat) => (
+                      <div key={cat.title}>
+                        <span className="block px-1 pb-2 text-xs font-semibold uppercase tracking-wider text-surface-400">
+                          {cat.title}
+                        </span>
+                        <div className="space-y-0.5">
+                          {cat.links.map((link) => (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              className="block rounded-lg px-2 py-1.5 text-sm font-medium text-surface-600 transition-colors hover:bg-primary-50 hover:text-primary-700"
+                            >
+                              {link.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 border-t border-surface-100 pt-3">
+                    <Link
+                      href="/funcionalidades"
+                      className="flex items-center gap-1 rounded-lg px-2 py-1.5 text-sm font-semibold text-primary-600 transition-colors hover:bg-primary-50 hover:text-primary-700"
                     >
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block rounded-lg px-4 py-2.5 text-sm font-medium text-surface-600 transition-colors hover:bg-primary-50 hover:text-primary-700"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ) : (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="rounded-lg px-4 py-2 text-sm font-medium text-surface-600 transition-colors hover:text-surface-900 hover:bg-surface-100"
-              >
-                {link.label}
-              </Link>
-            )
-          )}
+                      Ver todas las funcionalidades
+                      <ChevronRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Other nav links */}
+          {OTHER_LINKS.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="rounded-lg px-4 py-2 text-sm font-medium text-surface-600 transition-colors hover:text-surface-900 hover:bg-surface-100"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         {/* Desktop CTAs */}
@@ -168,36 +205,43 @@ export function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="lg:hidden overflow-hidden border-t border-surface-200 bg-white"
           >
-            <div className="px-6 py-6 space-y-1">
-              {NAV_LINKS.map((link) =>
-                link.children ? (
-                  <div key={link.label}>
-                    <span className="block px-4 py-2.5 text-sm font-semibold text-surface-400 uppercase tracking-wider">
+            <div className="px-6 py-6 space-y-4 max-h-[70vh] overflow-y-auto">
+              {/* Categories */}
+              {MENU_CATEGORIES.map((cat) => (
+                <div key={cat.title}>
+                  <span className="block px-4 py-2 text-xs font-semibold text-surface-400 uppercase tracking-wider">
+                    {cat.title}
+                  </span>
+                  {cat.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded-lg px-4 py-2.5 pl-8 text-sm font-medium text-surface-600 hover:bg-primary-50 hover:text-primary-700"
+                    >
                       {link.label}
-                    </span>
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="block rounded-lg px-4 py-2.5 pl-8 text-sm font-medium text-surface-600 hover:bg-primary-50 hover:text-primary-700"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                ) : (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block rounded-lg px-4 py-2.5 text-sm font-medium text-surface-600 hover:bg-primary-50 hover:text-primary-700"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
-              <div className="pt-4 mt-4 border-t border-surface-200 space-y-3">
+                    </Link>
+                  ))}
+                </div>
+              ))}
+
+              {/* Divider */}
+              <div className="border-t border-surface-100" />
+
+              {/* Other links */}
+              {OTHER_LINKS.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block rounded-lg px-4 py-2.5 text-sm font-medium text-surface-600 hover:bg-primary-50 hover:text-primary-700"
+                >
+                  {link.label}
+                </Link>
+              ))}
+
+              {/* CTAs */}
+              <div className="pt-4 border-t border-surface-200 space-y-3">
                 <a
                   href="https://cuentax.giraffos.com"
                   onClick={() => setMobileOpen(false)}
