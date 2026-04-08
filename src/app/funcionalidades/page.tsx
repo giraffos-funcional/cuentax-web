@@ -61,9 +61,24 @@ const modules = [
     color: "rose",
     gradient: "from-rose-500 to-pink-600",
   },
+  {
+    title: "Portal del Trabajador",
+    description:
+      "Autoservicio para empleados: liquidaciones, contrato, documentos laborales, asistencia y perfil. Sin llamar a RRHH.",
+    icon: Users,
+    href: "/funcionalidades/portal-del-trabajador",
+    color: "cyan",
+    gradient: "from-cyan-500 to-teal-600",
+  },
 ];
 
 const colorMap: Record<string, { bg: string; border: string; text: string; hoverBorder: string }> = {
+  cyan: {
+    bg: "bg-cyan-50",
+    border: "border-cyan-100",
+    text: "text-cyan-600",
+    hoverBorder: "group-hover:border-cyan-300",
+  },
   blue: {
     bg: "bg-blue-50",
     border: "border-blue-100",
@@ -121,7 +136,7 @@ export default function FuncionalidadesPage() {
               Modulos integrados
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Cinco modulos, una sola plataforma
+              Seis modulos, una sola plataforma
             </h2>
             <p className="mt-4 text-lg leading-8 text-gray-600">
               Cada modulo esta disenado para trabajar en conjunto. La informacion

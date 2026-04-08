@@ -439,6 +439,80 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ Portal del Trabajador Highlight ═══ */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-cyan-50 via-white to-teal-50/40 py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <AnimateOnScroll>
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-4 py-1.5 mb-6">
+                <Users className="h-4 w-4 text-cyan-600" />
+                <span className="text-sm font-medium text-cyan-700">Nuevo: Portal del Trabajador</span>
+              </div>
+              <h2 className="text-3xl font-bold tracking-tight text-surface-900 sm:text-4xl">
+                Autoservicio para tus{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-600">empleados</span>
+              </h2>
+              <p className="mt-4 text-lg text-surface-600 leading-relaxed">
+                Tus trabajadores acceden a liquidaciones, contratos y documentos laborales desde cualquier dispositivo. Reduce hasta un 80% las consultas a RRHH.
+              </p>
+              <ul className="mt-8 space-y-4">
+                {[
+                  "Liquidaciones de sueldo descargables en PDF",
+                  "Contrato vigente siempre disponible",
+                  "Certificados laborales y de antiguedad al instante",
+                  "Registro de asistencia y ausencias",
+                  "Perfil completo con datos de prevision",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-cyan-600" />
+                    <span className="text-surface-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                <Link
+                  href="/funcionalidades/portal-del-trabajador"
+                  className="inline-flex items-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-600/25 transition-all hover:bg-cyan-500 hover:shadow-cyan-500/30"
+                >
+                  Conocer el Portal
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll delay={0.15}>
+              <div className="relative w-full max-w-lg mx-auto overflow-hidden rounded-2xl border border-gray-200/60 bg-gradient-to-br from-cyan-50 to-teal-50 shadow-xl shadow-gray-900/5">
+                {/* Fake app chrome */}
+                <div className="flex items-center gap-1.5 border-b border-gray-200/50 bg-white/60 px-4 py-3 backdrop-blur-sm">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
+                  <span className="ml-3 h-5 flex-1 rounded-md bg-gray-200/50" />
+                </div>
+                {/* Portal mockup content */}
+                <div className="space-y-3 p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-10 w-10 rounded-full bg-cyan-200/60" />
+                    <div>
+                      <div className="h-4 w-32 rounded bg-gray-300/40" />
+                      <div className="mt-1 h-3 w-20 rounded bg-gray-300/30" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    {["Liquidaciones", "Contrato", "Documentos", "Asistencia", "Ausencias", "Mi Perfil"].map((label) => (
+                      <div key={label} className="rounded-lg bg-white/70 p-4 shadow-sm text-center">
+                        <div className="mx-auto mb-2 h-8 w-8 rounded-lg bg-cyan-100" />
+                        <span className="text-xs font-medium text-gray-600">{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ How It Works ═══ */}
       <section className="section-alt py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">

@@ -16,6 +16,7 @@ const NAV_LINKS = [
       { label: "Facturacion Electronica", href: "/funcionalidades/facturacion-electronica" },
       { label: "Declaraciones SII", href: "/funcionalidades/declaraciones-sii" },
       { label: "Reportes", href: "/funcionalidades/reportes" },
+      { label: "Portal del Trabajador", href: "/funcionalidades/portal-del-trabajador" },
     ],
   },
   { label: "Precios", href: "/precios" },
