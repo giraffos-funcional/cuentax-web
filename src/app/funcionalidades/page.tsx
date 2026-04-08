@@ -11,6 +11,16 @@ import {
   Calculator,
   ArrowRight,
   Sparkles,
+  Landmark,
+  Scale,
+  Shield,
+  ClipboardList,
+  Building2,
+  FileDown,
+  BookMarked,
+  TrendingUp,
+  Target,
+  ShoppingCart,
 } from "lucide-react";
 import { FeatureHero } from "@/components/feature-hero";
 import { CtaSection } from "@/components/cta-section";
@@ -69,6 +79,105 @@ const modules = [
     href: "/funcionalidades/portal-del-trabajador",
     color: "cyan",
     gradient: "from-cyan-500 to-teal-600",
+  },
+  {
+    title: "Conciliacion Bancaria",
+    description:
+      "Importa cartolas de cualquier banco chileno, concilia automaticamente y ten tus cuentas al dia en minutos.",
+    icon: Landmark,
+    href: "/funcionalidades/conciliacion-bancaria",
+    color: "blue",
+    gradient: "from-blue-500 to-cyan-600",
+  },
+  {
+    title: "Finiquitos",
+    description:
+      "Calculo automatico de indemnizacion, vacaciones proporcionales y todos los conceptos legales chilenos. PDF listo para firmar.",
+    icon: Scale,
+    href: "/funcionalidades/finiquitos",
+    color: "rose",
+    gradient: "from-rose-500 to-red-600",
+  },
+  {
+    title: "Certificacion SII",
+    description:
+      "Wizard paso a paso para certificar tu empresa ante el SII. Carga de certificado digital, folios CAF y set de pruebas.",
+    icon: Shield,
+    href: "/funcionalidades/certificacion-sii",
+    color: "amber",
+    gradient: "from-amber-500 to-yellow-600",
+  },
+  {
+    title: "Cotizaciones",
+    description:
+      "Crea presupuestos desde tu catalogo, envia al cliente y convierte en factura con un click.",
+    icon: ClipboardList,
+    href: "/funcionalidades/cotizaciones",
+    color: "violet",
+    gradient: "from-violet-500 to-indigo-600",
+  },
+  {
+    title: "Multi-Empresa",
+    description:
+      "Administra multiples empresas desde un solo login. Cambia entre ellas en un click con datos 100% aislados.",
+    icon: Building2,
+    href: "/funcionalidades/multi-empresa",
+    color: "emerald",
+    gradient: "from-emerald-500 to-green-600",
+  },
+  {
+    title: "Previred",
+    description:
+      "Genera el archivo .pre de declaracion mensual con AFP, Isapre, cesantia e impuesto unico. Validado antes de enviar.",
+    icon: FileDown,
+    href: "/funcionalidades/previred",
+    color: "cyan",
+    gradient: "from-cyan-500 to-blue-600",
+  },
+  {
+    title: "Libro de Remuneraciones",
+    description:
+      "Registro mensual obligatorio con haberes y descuentos por trabajador. Formato Direccion del Trabajo en PDF y CSV.",
+    icon: BookMarked,
+    href: "/funcionalidades/libro-remuneraciones",
+    color: "blue",
+    gradient: "from-blue-500 to-indigo-600",
+  },
+  {
+    title: "Libro Compras y Ventas",
+    description:
+      "Generacion automatica del IECV desde tus documentos tributarios. Envio directo al SII.",
+    icon: BookOpen,
+    href: "/funcionalidades/libro-compras-ventas",
+    color: "emerald",
+    gradient: "from-emerald-500 to-teal-600",
+  },
+  {
+    title: "Flujo de Caja",
+    description:
+      "Proyecta ingresos y egresos a 30, 60 y 90 dias. Alertas de liquidez y graficos interactivos.",
+    icon: TrendingUp,
+    href: "/funcionalidades/flujo-caja",
+    color: "amber",
+    gradient: "from-amber-500 to-orange-600",
+  },
+  {
+    title: "Centros de Costo",
+    description:
+      "Asigna ingresos y gastos por area, proyecto o sucursal. Reportes de rentabilidad por centro.",
+    icon: Target,
+    href: "/funcionalidades/centros-costo",
+    color: "violet",
+    gradient: "from-violet-500 to-purple-600",
+  },
+  {
+    title: "Gestion Comercial",
+    description:
+      "Administra clientes, proveedores y catalogo de productos. Todo conectado con facturacion y cotizaciones.",
+    icon: ShoppingCart,
+    href: "/funcionalidades/gestion-comercial",
+    color: "rose",
+    gradient: "from-rose-500 to-pink-600",
   },
 ];
 
@@ -136,12 +245,12 @@ export default function FuncionalidadesPage() {
               Modulos integrados
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Seis modulos, una sola plataforma
+              17 modulos, una sola plataforma
             </h2>
             <p className="mt-4 text-lg leading-8 text-gray-600">
               Cada modulo esta disenado para trabajar en conjunto. La informacion
-              fluye automaticamente entre contabilidad, facturacion y
-              remuneraciones.
+              fluye automaticamente entre contabilidad, facturacion,
+              remuneraciones y todos los procesos de tu empresa.
             </p>
           </motion.div>
 
